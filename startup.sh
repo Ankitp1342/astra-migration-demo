@@ -1,8 +1,6 @@
 #!/bin/bash
 
 
-
 cassandra -R
-uv run langflow run &
-
- 
+python3 langflow_setup.py &
+uv run langflow run 

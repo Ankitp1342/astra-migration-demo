@@ -11,12 +11,13 @@ RUN apt-get update
 RUN apt-get install python3-dev -y
 RUN python3 get-pip.py
 RUN apt-get install gcc-aarch64-linux-gnu -y 
+RUN apt-get install vim -y
 RUN pip install uv
 RUN uv pip install langflow --system
 RUN wget https://github.com/datastax/zdm-proxy/releases/download/v2.3.1/zdm-proxy-linux-amd64-v2.3.1.tgz 
 RUN tar -xvf zdm-proxy-linux-amd64-v2.3.1.tgz
 RUN mv zdm-proxy-v2.3.1 zdm
-RUN cassandra -R
+# RUNx cassandra -R
 
 RUN sleep 20
 # Copy in the source code
