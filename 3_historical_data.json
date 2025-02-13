@@ -1,0 +1,478 @@
+{
+  "icon_bg_color": null,
+  "user_id": "eb23dd05-8b63-437c-9b1a-51dc5e58ec59",
+  "gradient": null,
+  "icon": null,
+  "is_component": false,
+  "tags": null,
+  "updated_at": "2025-02-11T15:34:48+00:00",
+  "locked": false,
+  "webhook": false,
+  "folder_id": "a62ebdb2-1903-4e78-934a-350e689d78db",
+  "description": "Migrate Historical Data as Live traffic is being captured by ZeroDowntime Proxy",
+  "endpoint_name": null,
+  "id": "287f9efd-2c72-48ff-9464-281a8c69ada5",
+  "name": "3. Migrate Historical Data",
+  "data": {
+    "nodes": [
+      {
+        "id": "CustomComponent-mrUKy",
+        "type": "genericNode",
+        "position": {
+          "x": -966.6693829179911,
+          "y": -332.84599893532254
+        },
+        "data": {
+          "node": {
+            "template": {
+              "_type": "Component",
+              "code": {
+                "type": "code",
+                "required": true,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "multiline": true,
+                "value": "# from langflow.field_typing import Data\nfrom langflow.custom import Component\nfrom langflow.io import MessageTextInput, Output\nfrom langflow.schema import Data\nfrom langflow.field_typing import Text\n\n\nclass CustomComponent(Component):\n    display_name = \"Custom Component\"\n    description = \"Use as a template to create your own component.\"\n    documentation: str = \"http://docs.langflow.org/components/custom\"\n    icon = \"code\"\n    name = \"CustomComponent\"\n    idx = 1;\n\n    inputs = [\n        StrInput(\n            name=\"source\",\n            display_name=\"source IP\",\n            info=\"Source IP\",\n            value=\"127.0.0.1\",\n            required=True,\n        ),\n        StrInput(\n            name=\"source_username\",\n            display_name=\"Cassandra Username\",\n            info=\"Cassandra Username\",\n            value=\"\",\n            \n        ),\n        StrInput(\n            name=\"source_password\",\n            display_name=\"Source Password\",\n            info=\"Cassandra Password\",\n            value=\"\",\n            \n        ),\n    ]\n\n    outputs = [\n        Output(display_name=\"SourceConnection\", name=\"output\", method=\"build_output\"),\n    ]\n\n    def build_output(self) -> Data:\n        #data = Data(value=self.input_value)\n        #self.status = data\n        self.idx = self.idx + 1\n        return Data(\n                data={\n                    \"idx\": self.idx,\n                    \"ip\": self.source,\n                    \"source_username\": self.source_username,\n                    \"source_password\": self.source_password,\n                    \n                },\n            )\n            \n",
+                "fileTypes": [],
+                "file_path": "",
+                "password": false,
+                "name": "code",
+                "advanced": true,
+                "dynamic": true,
+                "info": "",
+                "load_from_db": false,
+                "title_case": false
+              },
+              "source": {
+                "trace_as_metadata": true,
+                "load_from_db": false,
+                "list": false,
+                "required": true,
+                "placeholder": "",
+                "show": true,
+                "name": "source",
+                "value": "127.0.0.1",
+                "display_name": "source IP",
+                "advanced": false,
+                "dynamic": false,
+                "info": "Source IP",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "StrInput"
+              },
+              "source_password": {
+                "trace_as_metadata": true,
+                "load_from_db": false,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "source_password",
+                "value": "",
+                "display_name": "Source Password",
+                "advanced": false,
+                "dynamic": false,
+                "info": "Cassandra Password",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "StrInput"
+              },
+              "source_username": {
+                "trace_as_metadata": true,
+                "load_from_db": false,
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "source_username",
+                "value": "",
+                "display_name": "Cassandra Username",
+                "advanced": false,
+                "dynamic": false,
+                "info": "Cassandra Username",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "StrInput"
+              }
+            },
+            "description": "Use as a template to create your own component.",
+            "icon": "code",
+            "base_classes": [
+              "Data"
+            ],
+            "display_name": "Cassandra Source",
+            "documentation": "http://docs.langflow.org/components/custom",
+            "custom_fields": {},
+            "output_types": [],
+            "pinned": false,
+            "conditional_paths": [],
+            "frozen": false,
+            "outputs": [
+              {
+                "types": [
+                  "Data"
+                ],
+                "selected": "Data",
+                "name": "output",
+                "display_name": "SourceConnection",
+                "method": "build_output",
+                "value": "__UNDEFINED__",
+                "cache": true
+              }
+            ],
+            "field_order": [
+              "source",
+              "source_username",
+              "source_password"
+            ],
+            "beta": false,
+            "legacy": false,
+            "edited": true,
+            "metadata": {},
+            "tool_mode": false,
+            "lf_version": "1.1.1"
+          },
+          "type": "CustomComponent",
+          "id": "CustomComponent-mrUKy"
+        },
+        "selected": false,
+        "width": 320,
+        "height": 424,
+        "positionAbsolute": {
+          "x": -966.6693829179911,
+          "y": -332.84599893532254
+        },
+        "dragging": false,
+        "measured": {
+          "width": 320,
+          "height": 424
+        }
+      },
+      {
+        "id": "CustomComponent-pHoBM",
+        "type": "genericNode",
+        "position": {
+          "x": -398.80127261500184,
+          "y": -32.20854916177096
+        },
+        "data": {
+          "node": {
+            "template": {
+              "_type": "Component",
+              "source": {
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "list": false,
+                "trace_as_input": true,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "source",
+                "value": "",
+                "display_name": "SourceConnection",
+                "advanced": false,
+                "input_types": [
+                  "Data"
+                ],
+                "dynamic": false,
+                "info": "The Source Database",
+                "title_case": false,
+                "type": "other",
+                "_input_type": "DataInput"
+              },
+              "target": {
+                "tool_mode": false,
+                "trace_as_metadata": true,
+                "list": false,
+                "trace_as_input": true,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "target",
+                "value": "",
+                "display_name": "TargetConnection",
+                "advanced": false,
+                "input_types": [
+                  "Data"
+                ],
+                "dynamic": false,
+                "info": "The Target Database",
+                "title_case": false,
+                "type": "other",
+                "_input_type": "DataInput"
+              },
+              "code": {
+                "type": "code",
+                "required": true,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "multiline": true,
+                "value": "# from langflow.field_typing import Data\nfrom langflow.custom import Component\nfrom langflow.io import MessageTextInput, Output\nfrom langflow.schema import Data\nfrom cassandra.cluster import Cluster\nfrom cassandra.auth import PlainTextAuthProvider\n\nclass CustomComponent(Component):\n    display_name = \"Custom Component\"\n    description = \"Use as a template to create your own component.\"\n    documentation: str = \"http://docs.langflow.org/components/custom\"\n    icon = \"code\"\n    name = \"CustomComponent\"\n\n    inputs = [\n        \n        \n        DataInput(name=\"source\", display_name=\"SourceConnection\", info=\"The Source Database\"),\n         \n        DataInput(name=\"target\", display_name=\"TargetConnection\", info=\"The Target Database\"),\n       \n        \n    ]\n\n    outputs = [\n        Output(display_name=\"Output\", name=\"output\", method=\"build_output\"),\n    ]\n\n    def build_output(self) -> list[Data]:\n        \n        cloud_config= {\n            'secure_connect_bundle': self.target.data[\"scb_path\"]\n        }\n        auth_provider = PlainTextAuthProvider(self.target.data[\"target_username\"], self.target.data[\"target_password\"])\n        target_cluster = Cluster(cloud=cloud_config, auth_provider=auth_provider)\n        target_session = target_cluster.connect()\n        insert_target = target_session.prepare(\"insert into test.movies (id,content) values (?,?)\")\n        \n        source_cluster = Cluster([self.source.data[\"ip\"]])\n        source_session = source_cluster.connect()\n        \n        orig_source_count = source_session.execute('SELECT count(*) as ct from test.movies').one().ct\n        orig_target_count = target_session.execute('SELECT count(*) as ct from test.movies').one().ct\n        \n        \n        \n        rowCount = 0\n        \n        rows = source_session.execute('SELECT id, content from test.movies')\n        for source_row in rows:\n            target_session.execute(insert_target,[source_row.id,source_row.content])\n            rowCount+=1    \n            \n    \n    \n        \n    \n        source_data = Data(\n                data={ \n                    \"Database\": \"Cassandra\",\n                    \"RecordCount\": source_session.execute('SELECT count(*) as ct from test.movies').one().ct,\n                    \n                },\n                \n            )\n        target_data = Data(\n                data={ \n                    \"Database\": \"AstraDB\",\n                    \"RecordCount\": target_session.execute('SELECT count(*) as ct from test.movies').one().ct,\n                },\n                \n            )\n        \n\n        return [source_data, target_data]\n        \n\n",
+                "fileTypes": [],
+                "file_path": "",
+                "password": false,
+                "name": "code",
+                "advanced": true,
+                "dynamic": true,
+                "info": "",
+                "load_from_db": false,
+                "title_case": false
+              }
+            },
+            "description": "Use as a template to create your own component.",
+            "icon": "code",
+            "base_classes": [
+              "Data"
+            ],
+            "display_name": "Migrate Data",
+            "documentation": "http://docs.langflow.org/components/custom",
+            "custom_fields": {},
+            "output_types": [],
+            "pinned": false,
+            "conditional_paths": [],
+            "frozen": false,
+            "outputs": [
+              {
+                "types": [
+                  "Data"
+                ],
+                "selected": "Data",
+                "name": "output",
+                "display_name": "Output",
+                "method": "build_output",
+                "value": "__UNDEFINED__",
+                "cache": true
+              }
+            ],
+            "field_order": [
+              "source",
+              "target"
+            ],
+            "beta": false,
+            "legacy": false,
+            "edited": true,
+            "metadata": {},
+            "tool_mode": false,
+            "lf_version": "1.1.1"
+          },
+          "type": "CustomComponent",
+          "id": "CustomComponent-pHoBM"
+        },
+        "selected": false,
+        "width": 320,
+        "height": 262,
+        "positionAbsolute": {
+          "x": -398.80127261500184,
+          "y": -32.20854916177096
+        },
+        "dragging": false,
+        "measured": {
+          "width": 320,
+          "height": 262
+        }
+      },
+      {
+        "id": "CustomComponent-27mKi",
+        "type": "genericNode",
+        "position": {
+          "x": -970.1484702015251,
+          "y": 139.2533761764044
+        },
+        "data": {
+          "node": {
+            "template": {
+              "_type": "Component",
+              "path": {
+                "trace_as_metadata": true,
+                "file_path": "817463f4-398e-4e96-b08d-292a7f7abc97/2025-01-24_16-42-17_secure-connect-astra-enterprise-aws.zip",
+                "fileTypes": [
+                  "zip"
+                ],
+                "list": false,
+                "required": false,
+                "placeholder": "",
+                "show": true,
+                "name": "path",
+                "value": "",
+                "display_name": "Path",
+                "advanced": false,
+                "dynamic": false,
+                "info": "Supported file types: zip",
+                "title_case": false,
+                "type": "file",
+                "_input_type": "FileInput"
+              },
+              "code": {
+                "type": "code",
+                "required": true,
+                "placeholder": "",
+                "list": false,
+                "show": true,
+                "multiline": true,
+                "value": "# from langflow.field_typing import Data\nfrom langflow.custom import Component\nfrom langflow.io import MessageTextInput, Output\nfrom langflow.schema import Data\n\n\nclass CustomComponent(Component):\n    display_name = \"Custom Component\"\n    description = \"Use as a template to create your own component.\"\n    documentation: str = \"http://docs.langflow.org/components/custom\"\n    icon = \"code\"\n    name = \"CustomComponent\"\n\n    inputs = [\n        FileInput(\n            name=\"path\",\n            display_name=\"Path\",\n            file_types=[\"zip\"],\n            info=f\"Supported file types: {'zip'}\",\n        ),\n         StrInput(\n            name=\"target_username\",\n            display_name=\"AstraDB Username\",\n            info=\"AstraDB Username\",\n            value=\"ASTRADB_USERNAME\",\n            required=True,\n        ),\n        StrInput(\n            name=\"target_password\",\n            display_name=\"AstraDB Password\",\n            info=\"AstraDB Password\",\n            value=\"ASTRADB_PASSWORD\",\n            required=True,\n        ),\n    ]\n\n    outputs = [\n        Output(display_name=\"TargetConnection\", name=\"output\", method=\"build_output\"),\n    ]\n\n    def build_output(self) -> Data:\n        data = Data(\n            data={\"scb_path\":self.path,\n                  \"target_username\":self.target_username,\n                  \"target_password\":self.target_password,\n                  }\n            )\n        self.status = data\n        return data\n",
+                "fileTypes": [],
+                "file_path": "",
+                "password": false,
+                "name": "code",
+                "advanced": true,
+                "dynamic": true,
+                "info": "",
+                "load_from_db": false,
+                "title_case": false
+              },
+              "target_password": {
+                "trace_as_metadata": true,
+                "load_from_db": false,
+                "list": false,
+                "required": true,
+                "placeholder": "",
+                "show": true,
+                "name": "target_password",
+                "value": "",
+                "display_name": "AstraDB Password",
+                "advanced": false,
+                "dynamic": false,
+                "info": "AstraDB Password",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "StrInput"
+              },
+              "target_username": {
+                "trace_as_metadata": true,
+                "load_from_db": false,
+                "list": false,
+                "required": true,
+                "placeholder": "",
+                "show": true,
+                "name": "target_username",
+                "value": "",
+                "display_name": "AstraDB Username",
+                "advanced": false,
+                "dynamic": false,
+                "info": "AstraDB Username",
+                "title_case": false,
+                "type": "str",
+                "_input_type": "StrInput"
+              }
+            },
+            "description": "Use as a template to create your own component.",
+            "icon": "code",
+            "base_classes": [
+              "Data"
+            ],
+            "display_name": "AstraDB Target",
+            "documentation": "http://docs.langflow.org/components/custom",
+            "custom_fields": {},
+            "output_types": [],
+            "pinned": false,
+            "conditional_paths": [],
+            "frozen": false,
+            "outputs": [
+              {
+                "types": [
+                  "Data"
+                ],
+                "selected": "Data",
+                "name": "output",
+                "display_name": "TargetConnection",
+                "method": "build_output",
+                "value": "__UNDEFINED__",
+                "cache": true
+              }
+            ],
+            "field_order": [
+              "path",
+              "target_username",
+              "target_password"
+            ],
+            "beta": false,
+            "legacy": false,
+            "edited": true,
+            "metadata": {},
+            "tool_mode": false,
+            "lf_version": "1.1.1"
+          },
+          "type": "CustomComponent",
+          "id": "CustomComponent-27mKi"
+        },
+        "selected": false,
+        "width": 320,
+        "height": 422,
+        "dragging": false,
+        "positionAbsolute": {
+          "x": -970.1484702015251,
+          "y": 139.2533761764044
+        },
+        "measured": {
+          "width": 320,
+          "height": 422
+        }
+      }
+    ],
+    "edges": [
+      {
+        "source": "CustomComponent-mrUKy",
+        "sourceHandle": "{œdataTypeœ:œCustomComponentœ,œidœ:œCustomComponent-mrUKyœ,œnameœ:œoutputœ,œoutput_typesœ:[œDataœ]}",
+        "target": "CustomComponent-pHoBM",
+        "targetHandle": "{œfieldNameœ:œsourceœ,œidœ:œCustomComponent-pHoBMœ,œinputTypesœ:[œDataœ],œtypeœ:œotherœ}",
+        "data": {
+          "targetHandle": {
+            "fieldName": "source",
+            "id": "CustomComponent-pHoBM",
+            "inputTypes": [
+              "Data"
+            ],
+            "type": "other"
+          },
+          "sourceHandle": {
+            "dataType": "CustomComponent",
+            "id": "CustomComponent-mrUKy",
+            "name": "output",
+            "output_types": [
+              "Data"
+            ]
+          }
+        },
+        "id": "reactflow__edge-CustomComponent-mrUKy{œdataTypeœ:œCustomComponentœ,œidœ:œCustomComponent-mrUKyœ,œnameœ:œoutputœ,œoutput_typesœ:[œDataœ]}-CustomComponent-pHoBM{œfieldNameœ:œsourceœ,œidœ:œCustomComponent-pHoBMœ,œinputTypesœ:[œDataœ],œtypeœ:œotherœ}",
+        "className": "",
+        "animated": false,
+        "selected": false
+      },
+      {
+        "source": "CustomComponent-27mKi",
+        "sourceHandle": "{œdataTypeœ:œCustomComponentœ,œidœ:œCustomComponent-27mKiœ,œnameœ:œoutputœ,œoutput_typesœ:[œDataœ]}",
+        "target": "CustomComponent-pHoBM",
+        "targetHandle": "{œfieldNameœ:œtargetœ,œidœ:œCustomComponent-pHoBMœ,œinputTypesœ:[œDataœ],œtypeœ:œotherœ}",
+        "data": {
+          "targetHandle": {
+            "fieldName": "target",
+            "id": "CustomComponent-pHoBM",
+            "inputTypes": [
+              "Data"
+            ],
+            "type": "other"
+          },
+          "sourceHandle": {
+            "dataType": "CustomComponent",
+            "id": "CustomComponent-27mKi",
+            "name": "output",
+            "output_types": [
+              "Data"
+            ]
+          }
+        },
+        "id": "reactflow__edge-CustomComponent-27mKi{œdataTypeœ:œCustomComponentœ,œidœ:œCustomComponent-27mKiœ,œnameœ:œoutputœ,œoutput_typesœ:[œDataœ]}-CustomComponent-pHoBM{œfieldNameœ:œtargetœ,œidœ:œCustomComponent-pHoBMœ,œinputTypesœ:[œDataœ],œtypeœ:œotherœ}",
+        "className": "",
+        "animated": false,
+        "selected": false
+      }
+    ],
+    "viewport": {
+      "x": 722.3653677006166,
+      "y": 206.14433137325585,
+      "zoom": 0.5460039809566076
+    }
+  }
+}

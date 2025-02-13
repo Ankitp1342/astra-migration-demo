@@ -1,0 +1,2 @@
+sudo docker buildx build -t migration-demo:v1 .
+sudo docker run -p 7860:7860 -d migration-demo:v1

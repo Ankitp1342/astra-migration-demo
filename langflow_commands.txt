@@ -1,0 +1,28 @@
+export LANGFLOW_URL="http://127.0.0.1:7860"
+
+
+
+curl -X 'POST' \
+  "$LANGFLOW_URL/api/v1/folders/" \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "MigrationDemo",
+  "description": "string",
+  "components_list": [],
+  "flows_list": []
+}'
+
+
+
+
+curl -X 'GET' \
+  "$LANGFLOW_URL/api/v1/folders/" \
+  -H 'accept: application/json'
+
+curl -X 'POST' \
+  "$LANGFLOW_URL/api/v1/flows/upload/?folder_id=$FOLDER_ID" \
+  -H 'accept: application/json' \
+  -H 'Content-Type: multipart/form-data' \
+  -F 'file=@agent-with-astra-db-tool.json;type=application/json'
+
