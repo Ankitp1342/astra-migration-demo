@@ -2,9 +2,6 @@
 
 This repo has the content related to building a zero downtime astra migration demo from C* & DSE
 
-> [!IMPORTANT]
-> Please note this job has been tested with spark version [3.5.4](https://archive.apache.org/dist/spark/spark-3.5.4/)
-
 ## 1. Build the container
 - Download the Repo
 - Build Step: sudo docker buildx build -t migration-demo:v1 .
