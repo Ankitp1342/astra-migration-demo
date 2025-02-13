@@ -3,6 +3,8 @@ WORKDIR /usr/local/app
 
 COPY startup.sh ./ 
 COPY start_zdm.sh ./
+COPY langflow_setup.py ./
+COPY *.json ./ 
 # Install the application dependencies
 RUN wget https://bootstrap.pypa.io/get-pip.py
 RUN apt-get update

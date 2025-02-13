@@ -3,4 +3,6 @@
 
 
 cassandra -R
-uv run langflow run
+uv run langflow run &
+
+ 
