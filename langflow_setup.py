@@ -21,7 +21,7 @@ def my_function():
     response = requests.post(api_url, files={"file": open("3_historical_data.json", "rb")});
     response = requests.post(api_url, files={"file": open("2_app_setup.json", "rb")});
     response = requests.post(api_url, files={"file": open("1_setup_zdm.json", "rb")});
-    response = requests.post(api_url, files={"file": open("Load Historical.json", "rb")});
+    response = requests.post(api_url, files={"file": open("0_load_historical_data.json", "rb")});
     return response  
 
 
