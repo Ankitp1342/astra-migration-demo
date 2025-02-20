@@ -2,7 +2,14 @@
 
 This repository contains content related to building a **zero-downtime Astra migration demo** from **Apache Cassandra® (C*) & DataStax Enterprise (DSE)**.
 
+## Software Pre-reqs
+
+- Docker
+
+
 ## Build the Container
+This container includes a C* instance as well as a Langflow instance.
+
 - Clone this repository.
 - Build the container:
   ```sh
@@ -16,20 +23,13 @@ This repository contains content related to building a **zero-downtime Astra mig
 ---
 
 ## Create the Schema in Cassandra
+Populate your local C* instance.  This will serve as the data source for the migration demo.
 1. Execute the following in a terminal:
+   (It may take a few moments for C* to start - retry if you get a connection refused message)
    ```sh
-   docker ps
+   docker exec -it `docker ps | grep migration-demo | awk '{print $1}'` cqlsh
    ```
-2. Note the `<pod_id>` of the container you just created.
-3. Access the container:
-   ```sh
-   docker exec -it <pod_id> bash
-   ```
-4. Open `cqlsh`:
-   ```sh
-   cqlsh
-   ```
-5. Create the keyspace and table:
+2. Create the keyspace and table:
    ```cql
    CREATE KEYSPACE IF NOT EXISTS test 
    WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
@@ -47,7 +47,7 @@ This repository contains content related to building a **zero-downtime Astra mig
 ## Create the Schema in Astra DB
 1. **Create a serverless database instance** (non-vector).
 2. **Create the keyspace** `test`.
-3. Navigate to the **CQL Console**.
+3. Navigate to the **CQL Console** within Astra.
 4. Execute the following:
    ```cql
    USE test;
@@ -62,23 +62,24 @@ This repository contains content related to building a **zero-downtime Astra mig
 
 ## Log into Langflow
 - Open [http://127.0.0.1:7860/](http://127.0.0.1:7860/).
-- Navigate to the **MigrationDemo** folder.
+- Navigate to the **MigrationDemo** folder
+
 
 ---
 
 ### Load Historical Data
-1. Select the **"Load Historical Data"** flow. No need to insert any details.
+1. Select the **"Load Historical Data"** flow.
 2. Execute in **Cassandra cqlsh**:
    ```cql
    SELECT * FROM test.movies;
    ```
-   - No data is populated yet.
-3. Execute the flow.
+   See how there is not yet any data in the keyspace.
+3. Execute the flow to populate data in the source C* datastore
 4. Run the query again:
    ```cql
    SELECT * FROM test.movies;
    ```
-   - Data is now populated **only in Cassandra**.
+   Data is now populated **only in Cassandra**.
 
 ---
 
